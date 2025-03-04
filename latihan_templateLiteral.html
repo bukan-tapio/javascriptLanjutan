@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan Template Literal</title>
+</head>
+<body>
+    <script>
+        // HTML Fragments, looping dan nested
+
+        const dosen = [
+            {
+                nama: "sandhika galih",
+                email: "sandhikagalih@uhamka.ac.id",
+                semester: 5,
+                matakuliah: [
+                    "Sastra Indonesi",
+                    "Sistem Informasi",
+                    "Keamanan Cyber"
+                ]
+            },
+            {
+                nama: "rio ferdiansyah",
+                email: "rioferdiansyah@uhamka.ac.id",
+                semester: 5,
+                matakuliah: [
+                    "Sastra Jerman",
+                    "Pengembangan Web",
+                    "Keamanan Web"
+                ]
+            },
+            {
+                nama: "fahmi erik",
+                email: "fahmierik@uhamka.ac.id",
+                semester: 5,
+                matakuliah: [
+                    "Sastra Jepang",
+                    "Pemrograman Berorientasi Object",
+                    "Kriptografi"
+                ]
+            },
+        ]
+
+        function tampilMatakuliah (mataKuliah){
+            return `
+            <ol>
+                ${mataKuliah.map(mk => `<li>${mk}</li>`).join("")}
+            </ol>
+            `
+        }
+
+        const element = `
+        <div class="dosen">
+            <h4>Bio data dosen</h4>
+            ${dosen.map(le => 
+            `
+            <h4>Nama Dosen : ${le.nama}</h4>
+            <ol>
+                <li>Email       : ${le.email}</li>
+                <li>Semester    : ${le.semester}</li>
+                ${tampilMatakuliah(le.matakuliah)}
+            </ol>
+            `
+            ).join('')}
+        </div>
+        `;
+
+
+        document.body.innerHTML = element;
+    </script>
+</body>
+</html>
